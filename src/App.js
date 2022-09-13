@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
+// card array
 const cardImages = [
   {"src": "/img/helmet-1.png"},
   {"src": "/img/potion-1.png"},
