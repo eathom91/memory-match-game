@@ -24,7 +24,7 @@ function App() {
       setCards(shuffledCards)
       setTurns(0)
   }
-  
+  // log card order
   console.log(cards, turns)
 
   return (
