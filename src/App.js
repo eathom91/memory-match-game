@@ -46,6 +46,8 @@ useEffect(() => {
             // spreads out the current card obj values, and sets match
             // to true.
             return {...card, matched: true}
+          } else {
+            return card
           }
         })
       })
@@ -55,6 +57,8 @@ useEffect(() => {
     } 
   }
 }, [choiceOne, choiceTwo])
+
+console.log(cards)
 
   const resetTurn = () => {
     setChoiceOne(null)
