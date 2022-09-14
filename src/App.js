@@ -36,10 +36,15 @@ function App() {
 useEffect(() => {
   // two choices need to have been made
   if (choiceOne && choiceTwo){
+    // if both choices match
     if (choiceOne === choiceTwo){
+      // call state update for cards iterating over current state value
+      // matching the choiceOne and choicetwo based on src.
       setCards(prevCards => {
         return prevCards.map(card => {
           if (card.src === choiceOne.src) {
+            // spreads out the current card obj values, and sets match
+            // to true.
             return {...card, matched: true}
           }
         })
