@@ -37,7 +37,7 @@ useEffect(() => {
   // two choices need to have been made
   if (choiceOne && choiceTwo){
     // if both choices match
-    if (choiceOne === choiceTwo){
+    if (choiceOne.src === choiceTwo.src){
       // call state update for cards iterating over current state value
       // matching the choiceOne and choicetwo based on src.
       setCards(prevCards => {
@@ -51,9 +51,10 @@ useEffect(() => {
           }
         })
       })
+      setTimeout(() => resetTurn(), 750)
       resetTurn()
     } else {
-      resetTurn()
+      setTimeout(() => resetTurn(), 750)
     } 
   }
 }, [choiceOne, choiceTwo])
