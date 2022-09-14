@@ -51,9 +51,10 @@ useEffect(() => {
           }
         })
       })
+      // timeout by 3/4 sec
       setTimeout(() => resetTurn(), 750)
-      resetTurn()
     } else {
+      // timeout by 3/4 sec
       setTimeout(() => resetTurn(), 750)
     } 
   }
