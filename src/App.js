@@ -78,6 +78,7 @@ console.log(cards)
           key={card.id} 
           card={card}
           handleChoice={handleChoice}
+          // on component re-eval, check if card is chosen, or matched prior
           flipped={card === choiceOne || card === choiceTwo || card.matched} />
         ))}
       </div>
