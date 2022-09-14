@@ -4,12 +4,12 @@ import SingleCard from "./components/SingleCard";
 
 // card array
 const cardImages = [
-  { src: "/img/helmet-1.png" },
-  { src: "/img/potion-1.png" },
-  { src: "/img/ring-1.png" },
-  { src: "/img/scroll-1.png" },
-  { src: "/img/shield-1.png" },
-  { src: "/img/sword-1.png" },
+  { src: "/img/helmet-1.png", matched: false },
+  { src: "/img/potion-1.png", matched: false },
+  { src: "/img/ring-1.png", matched: false },
+  { src: "/img/scroll-1.png", matched: false },
+  { src: "/img/shield-1.png", matched: false },
+  { src: "/img/sword-1.png", matched: false },
 ];
 
 function App() {
@@ -31,17 +31,23 @@ function App() {
   // handle a choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-
   };
-
+// runs once, then only if dep. arr value changes
 useEffect(() => {
+  // two choices need to have been made
   if (choiceOne && choiceTwo){
     if (choiceOne === choiceTwo){
-      console.log("match")
+      setCards(prevCards => {
+        return prevCards.map(card => {
+          if (card.src === choiceOne.src) {
+            return {...card, matched: true}
+          }
+        })
+      })
+      resetTurn()
     } else {
-      console.log("wrong")
+      resetTurn()
     } 
-    resetTurn()
   }
 }, [choiceOne, choiceTwo])
 
