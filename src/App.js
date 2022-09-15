@@ -24,7 +24,8 @@ function App() {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
-
+    setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffledCards);
     setTurns(0);
   };
@@ -35,9 +36,10 @@ function App() {
   };
 // runs once, then only if dep. arr value changes
 useEffect(() => {
-  setDisabled(true);
+  
   // two choices need to have been made
   if (choiceOne && choiceTwo){
+    setDisabled(true);
     // if both choices match
     if (choiceOne.src === choiceTwo.src){
       // call state update for cards iterating over current state value
@@ -71,6 +73,10 @@ console.log(cards)
     setDisabled(false)
   }
 
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+
   return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -87,6 +93,7 @@ console.log(cards)
           disabled={disabled} />
         ))}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
