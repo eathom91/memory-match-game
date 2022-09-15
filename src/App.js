@@ -73,7 +73,7 @@ console.log(cards)
     setDisabled(false)
   }
 
-  // useEffect to auto-start the game.
+  // useEffect to auto-start the game
   useEffect(() => {
     shuffleCards()
   }, [])
