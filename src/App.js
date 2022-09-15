@@ -17,6 +17,7 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   // shuffle cards
   const shuffleCards = () => {
@@ -34,6 +35,7 @@ function App() {
   };
 // runs once, then only if dep. arr value changes
 useEffect(() => {
+  setDisabled(true);
   // two choices need to have been made
   if (choiceOne && choiceTwo){
     // if both choices match
@@ -66,7 +68,7 @@ console.log(cards)
     setChoiceOne(null)
     setChoiceTwo(null)
     setTurns(prevTurns => prevTurns + 1)
-    console.log(turns)
+    setDisabled(false)
   }
 
   return (
@@ -81,7 +83,8 @@ console.log(cards)
           card={card}
           handleChoice={handleChoice}
           // on component re-eval, check if card is chosen, or matched prior
-          flipped={card === choiceOne || card === choiceTwo || card.matched} />
+          flipped={card === choiceOne || card === choiceTwo || card.matched}
+          disabled={disabled} />
         ))}
       </div>
     </div>
